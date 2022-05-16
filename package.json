@@ -18,6 +18,11 @@
     "react-native": "0.64.3",
     "react-native-web": "0.17.1"
   },
+  "overrides": {
+    "react-native": {
+      "react-devtools-core": "4.14.0"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.17.0",
