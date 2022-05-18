@@ -2,6 +2,7 @@ const theme = {
   colors: {
     textPrimary: '#24292e',
     textSecondary: '#586069',
+    textDarkBackground: 'white',
     primary: '#0366d6',
   },
   fontSizes: {
@@ -18,6 +19,15 @@ const theme = {
   backgroundColors: {
     appBar: '#24292e',
     primary: '#e5e5e5',
+    card: 'white',
+  },
+  images: {
+    profileImage: {
+      width: 50,
+      height: 50,
+      borderRadius: 6,
+      marginRight: 10,
+    },
   },
 }
 
