@@ -7,6 +7,8 @@ import Text from './Text'
 const styles = StyleSheet.create({
   errorText: {
     marginTop: 5,
+    marginBottom: 10,
+    color: '#d73a4a',
   },
   inputFields: {
     borderColor: 'silver',
@@ -21,14 +23,19 @@ const styles = StyleSheet.create({
 const FormikTextInput = ({ name, ...props }) => {
   const [field, meta, helpers] = useField(name)
   const showError = meta.touched && meta.error
+  const style = [
+    styles.inputFields,
+    showError && { ...styles.inputFields, borderColor: styles.errorText.color },
+  ]
 
   return (
-    <View style={styles.inputFields}>
+    <View>
       <TextInput
         onChangeText={(value) => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
+        style={style}
         {...props}
       />
       {showError && <Text style={styles.errorText}>{meta.error}</Text>}
