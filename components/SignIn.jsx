@@ -3,6 +3,7 @@ import { Pressable, View } from 'react-native'
 import { Formik } from 'formik'
 import Text from './Text'
 import theme from '../theme'
+import Button from './Button'
 
 const initialValues = {
   username: '',
@@ -23,26 +24,12 @@ const SignIn = ({ onSubmit }) => {
         placeholder='password'
         secureTextEntry={true}
       />
-      <Pressable
-        style={{
-          backgroundColor: 'blue',
-          marginTop: 10,
-          padding: 20,
-          borderRadius: 6,
-        }}
+      <Button
+        type='large'
+        backGround='primary'
+        text='Sign In'
         onPress={onSubmit}
-      >
-        <Text
-          fontSize='subheading'
-          color='textDarkBackground'
-          fontWeight='bold'
-          style={{
-            alignSelf: 'center',
-          }}
-        >
-          Sign In
-        </Text>
-      </Pressable>
+      />
     </View>
   )
 }

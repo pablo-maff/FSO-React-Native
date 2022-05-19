@@ -20,6 +20,7 @@ const theme = {
     appBar: '#24292e',
     primary: '#e5e5e5',
     card: 'white',
+    buttonPrimary: 'blue',
   },
   images: {
     profileImage: {
@@ -27,6 +28,13 @@ const theme = {
       height: 50,
       borderRadius: 6,
       marginRight: 10,
+    },
+  },
+  buttons: {
+    largeButton: {
+      marginTop: 10,
+      padding: 20,
+      borderRadius: 6,
     },
   },
 }
