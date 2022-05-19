@@ -8,18 +8,15 @@ import { ScrollView } from 'react-native'
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.backgroundColors.appBar,
-    paddingTop: Constants.statusBarHeight,
-    flex: 1,
+    paddingTop: Constants.statusBarHeight + 30,
+    paddingBottom: 15,
   },
 })
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <ScrollView
-        horizontal
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-evenly' }}
-      >
+      <ScrollView horizontal contentContainerStyle={{ flexGrow: 1 }}>
         <AppBarTab text={'Repositories'} path={'/'} />
         <AppBarTab text={'Sign In'} path={'/login'} />
       </ScrollView>
