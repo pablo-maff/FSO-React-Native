@@ -1,7 +1,7 @@
 import { Image } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { View } from 'react-native'
-import theme from '../theme'
+import theme from '../../theme'
 import ItemHeader from './ItemHeader'
 import ItemStat from './ItemStat'
 

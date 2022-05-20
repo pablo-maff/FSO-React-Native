@@ -1,5 +1,5 @@
 import { View } from 'react-native'
-import Text from './Text'
+import Text from '../Text'
 const ItemStat = ({ num, label }) => {
   const numToThousands = (num) => {
     if (num >= 1000) {
