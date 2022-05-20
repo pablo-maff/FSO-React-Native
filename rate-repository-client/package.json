@@ -32,6 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.17.0",
+    "dotenv": "^16.0.1",
     "eslint": "^8.15.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-native": "^4.0.0"
