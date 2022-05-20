@@ -14,10 +14,6 @@ const ItemSeparator = () => <View style={styles.separator} />
 const RepositoryList = () => {
   const { repositories, loading, error } = useRepositories()
 
-  if (loading) {
-    return <Text>loading...</Text>
-  }
-
   // console.log('repo', repositories.edges)
 
   // Get the nodes from the edges array
