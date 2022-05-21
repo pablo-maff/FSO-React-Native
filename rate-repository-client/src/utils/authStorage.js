@@ -5,12 +5,8 @@ class AuthStorage {
     this.namespace = namespace
   }
 
-  async getAccesToken() {
-    try {
-      return AsyncStorage.getItem(`${this.namespace}:token`)
-    } catch (error) {
-      console.error(error)
-    }
+  async getAccessToken() {
+    return AsyncStorage.getItem(`${this.namespace}:token`)
   }
 
   async setAccessToken(accessToken) {
@@ -22,11 +18,7 @@ class AuthStorage {
   }
 
   async removeAccestoken() {
-    try {
-      return AsyncStorage.removeItem(`${this.namespace}:token`)
-    } catch (error) {
-      console.error(error)
-    }
+    return AsyncStorage.removeItem(`${this.namespace}:token`)
   }
 }
 export default AuthStorage
