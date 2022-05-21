@@ -9,3 +9,11 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `
+export const LOGGED_IN_USER = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`
