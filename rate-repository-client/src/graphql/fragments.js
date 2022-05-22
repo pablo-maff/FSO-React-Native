@@ -1,9 +1,11 @@
 import { gql } from '@apollo/client'
 
-export const REPOSITORY_DETAILS = gql`
-  fragment RepositoryDetails on RepositoryConnection {
+export const REPOSITORIES_DETAILS = gql`
+  fragment RepositoriesDetails on RepositoryConnection {
     edges {
       node {
+        id
+        ownerAvatarUrl
         fullName
         description
         language
@@ -11,9 +13,22 @@ export const REPOSITORY_DETAILS = gql`
         forksCount
         reviewCount
         ratingAverage
-        ownerAvatarUrl
-        id
       }
     }
+  }
+`
+
+export const REPOSITORY_DETAILS = gql`
+  fragment RepositoryDetails on Repository {
+    id
+    ownerAvatarUrl
+    fullName
+    description
+    language
+    stargazersCount
+    forksCount
+    reviewCount
+    ratingAverage
+    url
   }
 `

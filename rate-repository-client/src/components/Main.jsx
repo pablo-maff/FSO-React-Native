@@ -5,6 +5,7 @@ import AppBar from './Appbar'
 import RepositoryList from './RepositoryList'
 import theme from '../theme'
 import SignInHandler from './SignIn'
+import RepositoryDetails from './RepositoryList/RepositoryDetails'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,7 @@ const Main = () => {
         <Routes>
           <Route path='/' element={<RepositoryList />} exact />
           <Route path='/login' element={<SignInHandler />} exact />
+          <Route path='/:id' element={<RepositoryDetails />} exact />
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </View>

@@ -36,7 +36,8 @@
     "react-native": "0.64.3",
     "react-native-web": "0.17.1",
     "react-router-native": "^6.3.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-linking": "~3.0.0"
   },
   "overrides": {
     "react-native": {
