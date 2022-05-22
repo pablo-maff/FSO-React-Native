@@ -1,18 +1,17 @@
 import { View } from 'react-native'
+import numToThousands from '../../utils/numToThousands'
 import Text from '../Text'
-const ItemStat = ({ num, label }) => {
-  const numToThousands = (num) => {
-    if (num >= 1000) {
-      const k = (num / 1000).toFixed(1)
-      return `${k}k`
-    }
-    return num
-  }
-
+const ItemStat = ({ num, text, testID, accessibilityLabel }) => {
   return (
     <View style={{ alignItems: 'center' }}>
-      <Text fontWeight='bold'>{numToThousands(num)}</Text>
-      <Text color='textSecondary'>{label}</Text>
+      <Text
+        fontWeight='bold'
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
+      >
+        {numToThousands(num)}
+      </Text>
+      <Text color='textSecondary'>{text}</Text>
     </View>
   )
 }

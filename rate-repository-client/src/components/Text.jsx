@@ -25,7 +25,15 @@ const styles = StyleSheet.create({
   },
 })
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({
+  color,
+  fontSize,
+  fontWeight,
+  style,
+  testID,
+  accesibilityLabel,
+  ...props
+}) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
@@ -36,7 +44,14 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     style,
   ]
 
-  return <NativeText style={textStyle} {...props} />
+  return (
+    <NativeText
+      testID={testID}
+      accessibilityLabel={accesibilityLabel}
+      style={textStyle}
+      {...props}
+    />
+  )
 }
 
 export default Text

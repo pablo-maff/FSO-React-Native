@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.flexContainer}>
+    <View accessibilityLabel='repository-item' style={styles.flexContainer}>
       <View style={styles.headerItems}>
         <Image
           source={{ uri: item.ownerAvatarUrl }}
@@ -36,10 +36,26 @@ const RepositoryItem = ({ item }) => {
         />
       </View>
       <View style={styles.statsItems}>
-        <ItemStat num={item.stargazersCount} label={'Stars'} />
-        <ItemStat num={item.forksCount} label={'Forks'} />
-        <ItemStat num={item.reviewCount} label={'Reviews'} />
-        <ItemStat num={item.ratingAverage} label={'Rating'} />
+        <ItemStat
+          num={item.stargazersCount}
+          text={'Stars'}
+          accessibilityLabel='stars-count'
+        />
+        <ItemStat
+          num={item.forksCount}
+          text={'Forks'}
+          accessibilityLabel='forks-count'
+        />
+        <ItemStat
+          num={item.reviewCount}
+          text={'Reviews'}
+          accessibilityLabel='review-count'
+        />
+        <ItemStat
+          num={item.ratingAverage}
+          text={'Rating'}
+          accessibilityLabel='rating-average'
+        />
       </View>
     </View>
   )
