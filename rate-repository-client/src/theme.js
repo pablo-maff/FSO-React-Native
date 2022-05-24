@@ -25,7 +25,6 @@ const theme = {
   backgroundColors: {
     appBar: '#24292e',
     primary: '#e5e5e5',
-    card: 'white',
     buttonPrimary: 'blue',
   },
   images: {
@@ -33,14 +32,57 @@ const theme = {
       width: 50,
       height: 50,
       borderRadius: 6,
-      marginRight: 10,
+      marginHorizontal: 10,
     },
   },
   buttons: {
     largeButton: {
-      marginTop: 10,
       padding: 20,
       borderRadius: 6,
+    },
+    smallButton: {
+      paddingHorizontal: 5,
+      marginTop: 5,
+      marginBottom: 10,
+      alignSelf: 'flex-start',
+      backgroundColor: 'blue',
+      borderRadius: 5,
+    },
+  },
+  itemSeparator: {
+    marginBottom: 8,
+  },
+  container: {
+    card: {
+      paddingTop: 8,
+      paddingBottom: 12,
+      backgroundColor: 'white',
+    },
+    row: {
+      flexDirection: 'row',
+    },
+    header: {
+      justifyContent: 'center',
+      flexShrink: 1,
+    },
+    itemSeparator: {
+      paddingVertical: 4,
+    },
+  },
+
+  forms: {
+    inputFields: {
+      borderColor: 'silver',
+      borderRadius: 6,
+      borderStyle: 'solid',
+      borderWidth: 2,
+      padding: 9,
+      marginBottom: 8,
+    },
+    errorText: {
+      marginTop: 5,
+      marginBottom: 10,
+      color: '#d73a4a',
     },
   },
 }

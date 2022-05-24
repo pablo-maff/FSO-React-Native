@@ -5,12 +5,7 @@ import FormikTextInput from '../FormikTextInput'
 
 const SignInForm = ({ onSubmit }) => {
   return (
-    <View
-      style={{
-        backgroundColor: theme.backgroundColors.card,
-        padding: 20,
-      }}
-    >
+    <View style={theme.container.card}>
       <FormikTextInput name='username' placeholder='username' />
       <FormikTextInput
         name='password'
