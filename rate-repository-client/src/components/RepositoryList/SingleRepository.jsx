@@ -4,9 +4,9 @@ import useRepository from '../../hooks/useRepository'
 import theme from '../../theme'
 import Text from '../Text'
 import RepositoryInfo from './RepositoryInfo'
-import ReviewItem from './ReviewItem'
+import ReviewItem from './Reviews/ReviewItem'
 
-const RepositoryDetails = () => {
+const SingleRepository = () => {
   const { id } = useParams()
   const { repository, loading, error, refetch } = useRepository(id)
 
@@ -33,4 +33,4 @@ const RepositoryDetails = () => {
   )
 }
 
-export default RepositoryDetails
+export default SingleRepository

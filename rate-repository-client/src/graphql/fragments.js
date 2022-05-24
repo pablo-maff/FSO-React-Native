@@ -30,5 +30,35 @@ export const REPOSITORY_DETAILS = gql`
     reviewCount
     ratingAverage
     url
+    reviews {
+      edges {
+        node {
+          id
+          text
+          rating
+          createdAt
+          user {
+            id
+            username
+          }
+        }
+      }
+    }
+  }
+`
+
+export const REVIEWS_DETAILS = gql`
+  fragment ReviewsDetails on Review {
+    id
+    text
+    rating
+    createdAt
+    user {
+      id
+      username
+    }
+    repository {
+      id
+    }
   }
 `

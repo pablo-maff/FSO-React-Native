@@ -1,7 +1,7 @@
 import { View } from 'react-native'
-import Text from '../Text'
+import Text from '../../Text'
 import { format, parseISO } from 'date-fns'
-import theme from '../../theme'
+import theme from '../../../theme'
 
 const ReviewHeader = ({ userName, date }) => {
   date = format(parseISO(date), 'dd/MM/yyyy')

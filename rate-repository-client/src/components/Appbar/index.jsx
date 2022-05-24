@@ -39,7 +39,14 @@ const AppBar = () => {
         {!loggedInUser ? (
           <AppBarTab text={'Sign In'} path={'/login'} />
         ) : (
-          <AppBarTab text={'Sign Out'} path={'/login'} onPress={handleLogout} />
+          <>
+            <AppBarTab text={'Create a review'} path={'/review'} />
+            <AppBarTab
+              text={'Sign Out'}
+              path={'/login'}
+              onPress={handleLogout}
+            />
+          </>
         )}
       </ScrollView>
     </View>
