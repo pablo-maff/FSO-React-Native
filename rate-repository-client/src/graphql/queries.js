@@ -3,8 +3,8 @@ import { REPOSITORIES_DETAILS, REPOSITORY_DETAILS } from './fragments'
 
 export const GET_REPOSITORIES = gql`
   ${REPOSITORIES_DETAILS}
-  query {
-    repositories {
+  query ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
       ...RepositoriesDetails
     }
   }
