@@ -1,26 +1,27 @@
 import { useState } from 'react'
 import useRepositories from '../../hooks/useRepositories'
 import RepositoryListContainer from './RepositoryListContainer'
-import { Picker } from '@react-native-picker/picker'
+import { useDebounce } from 'use-debounce'
 
 const RepositoryList = () => {
   const [orderedRepositories, setOrderedRepositories] = useState()
-  const { repositories, loading, error } = useRepositories(orderedRepositories)
+  const [searchRepo, setSearchRepo] = useState('')
+  // Add delay to not perform unnecessary requests while user is typing
+  const [searchKeyword] = useDebounce(searchRepo, 500)
+
+  const { repositories, loading, error } = useRepositories(
+    orderedRepositories,
+    searchKeyword
+  )
 
   return (
-    <>
-      <Picker
-        selectedValue={orderedRepositories}
-        onValueChange={(itemValue, itemIndex) =>
-          setOrderedRepositories(itemValue)
-        }
-      >
-        <Picker.Item label='Latest repositories' value={'createdLatest'} />
-        <Picker.Item label='Highest rated repositories' value={'higherAvg'} />
-        <Picker.Item label='Lowest rated repositories' value={'lowerAvg'} />
-      </Picker>
-      <RepositoryListContainer repositories={repositories} />
-    </>
+    <RepositoryListContainer
+      repositories={repositories}
+      orderedRepositories={orderedRepositories}
+      setOrderedRepositories={setOrderedRepositories}
+      searchRepo={searchRepo}
+      setSearchRepo={setSearchRepo}
+    />
   )
 }
 

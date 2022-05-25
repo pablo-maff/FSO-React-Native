@@ -39,6 +39,7 @@
     "react-native": "0.64.3",
     "react-native-web": "0.17.1",
     "react-router-native": "^6.3.0",
+    "use-debounce": "^8.0.1",
     "yup": "^0.32.11"
   },
   "overrides": {
