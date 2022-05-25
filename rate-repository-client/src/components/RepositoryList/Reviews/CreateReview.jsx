@@ -1,13 +1,12 @@
 import * as yup from 'yup'
 import { Formik } from 'formik'
 import ReviewForm from './ReviewForm'
-import useCreateReview from '../../../hooks/useCreateReview'
 
 const initialValues = {
-  repositoryOwner: '',
+  ownerName: '',
   repositoryName: '',
   rating: '',
-  review: '',
+  text: '',
 }
 
 const validationSchema = yup.object().shape({
@@ -24,10 +23,9 @@ const validationSchema = yup.object().shape({
 })
 
 const CreateReview = ({ onSubmit }) => {
-  const [createReview] = useCreateReview()
   const handleSubmit = async (values) => {
     const parsedValues = validationSchema.cast(values)
-    await createReview(parsedValues)
+    await onSubmit(parsedValues)
   }
 
   return (

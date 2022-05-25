@@ -37,7 +37,10 @@ const AppBar = () => {
       <ScrollView horizontal contentContainerStyle={{ flexGrow: 1 }}>
         <AppBarTab text={'Repositories'} path={'/'} />
         {!loggedInUser ? (
-          <AppBarTab text={'Sign In'} path={'/login'} />
+          <>
+            <AppBarTab text={'Sign In'} path={'/login'} />
+            <AppBarTab text={'Sign Up'} path={'/signup'} />
+          </>
         ) : (
           <>
             <AppBarTab text={'Create a review'} path={'/review'} />
