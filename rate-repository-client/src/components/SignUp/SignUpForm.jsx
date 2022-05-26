@@ -17,12 +17,7 @@ const SignUpForm = ({ onSubmit }) => {
         placeholder='Password Confirmation'
         secureTextEntry={true}
       />
-      <Button
-        type='large'
-        backGround='primary'
-        text='Sign Up'
-        onPress={onSubmit}
-      />
+      <Button type='large' text='Sign Up' onPress={onSubmit} />
     </View>
   )
 }

@@ -73,6 +73,7 @@ export const LOGGED_IN_USER = gql`
             createdAt
             text
             repository {
+              id
               fullName
             }
           }

@@ -12,12 +12,7 @@ const SignInForm = ({ onSubmit }) => {
         placeholder='password'
         secureTextEntry={true}
       />
-      <Button
-        type='large'
-        backGround='primary'
-        text='Sign In'
-        onPress={onSubmit}
-      />
+      <Button type='large' text='Sign In' onPress={onSubmit} />
     </View>
   )
 }

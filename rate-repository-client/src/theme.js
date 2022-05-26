@@ -25,7 +25,6 @@ const theme = {
   backgroundColors: {
     appBar: '#24292e',
     primary: '#e5e5e5',
-    buttonPrimary: 'blue',
   },
   images: {
     profileImage: {
@@ -39,6 +38,7 @@ const theme = {
     largeButton: {
       padding: 20,
       borderRadius: 6,
+      backgroundColor: 'blue',
     },
     smallButton: {
       paddingHorizontal: 5,

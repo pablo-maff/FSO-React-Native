@@ -10,7 +10,6 @@ const RepositoryInfo = ({ repository }) => {
       <RepositoryItem item={repository} />
       <Button
         type='large'
-        backGround='primary'
         text='Open in Github'
         onPress={() => Linking.openURL(repository.url)}
       />

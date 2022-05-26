@@ -1,22 +1,12 @@
-import { Pressable, StyleSheet } from 'react-native'
+import { Pressable } from 'react-native'
 import theme from '../theme'
 import Text from './Text'
 
-const styles = StyleSheet.create({
-  large: {
-    marginTop: theme.buttons.largeButton.marginTop,
-    padding: theme.buttons.largeButton.padding,
-    borderRadius: theme.buttons.largeButton.borderRadius,
-  },
-  backGround: {
-    backgroundColor: theme.backgroundColors.buttonPrimary,
-  },
-})
-
-const Button = ({ type, text, backGround, ...props }) => {
+const Button = ({ type, text, style, ...props }) => {
   const buttonStyle = [
-    type === 'large' && styles.large,
-    backGround === 'primary' && styles.backGround,
+    type === 'large' && theme.buttons.largeButton,
+    type === 'small' && theme.buttons.smallButton,
+    style,
   ]
   return (
     <Pressable style={buttonStyle} {...props}>
