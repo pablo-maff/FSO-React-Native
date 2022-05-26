@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { REPOSITORIES_DETAILS, REPOSITORY_DETAILS } from './fragments'
+import { REPOSITORIES_DETAILS } from './fragments'
 
 export const GET_REPOSITORIES = gql`
   ${REPOSITORIES_DETAILS}
@@ -7,11 +7,15 @@ export const GET_REPOSITORIES = gql`
     $orderBy: AllRepositoriesOrderBy
     $orderDirection: OrderDirection
     $searchKeyword: String
+    $first: Int
+    $after: String
   ) {
     repositories(
       orderBy: $orderBy
       orderDirection: $orderDirection
       searchKeyword: $searchKeyword
+      first: $first
+      after: $after
     ) {
       ...RepositoriesDetails
     }
@@ -19,10 +23,38 @@ export const GET_REPOSITORIES = gql`
 `
 
 export const GET_REPOSITORY = gql`
-  ${REPOSITORY_DETAILS}
-  query ($repositoryId: ID!) {
+  query ($repositoryId: ID!, $first: Int, $after: String) {
     repository(id: $repositoryId) {
-      ...RepositoryDetails
+      id
+      ownerAvatarUrl
+      fullName
+      description
+      language
+      stargazersCount
+      forksCount
+      reviewCount
+      ratingAverage
+      url
+      reviews(first: $first, after: $after) {
+        edges {
+          cursor
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+        }
+      }
     }
   }
 `

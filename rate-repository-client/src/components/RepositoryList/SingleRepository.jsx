@@ -8,14 +8,20 @@ import ReviewItem from './Reviews/ReviewItem'
 
 const SingleRepository = () => {
   const { id } = useParams()
-  const { repository, loading, error, refetch } = useRepository(id)
+  const { repository, loading, error, fetchMore } = useRepository({
+    first: 8,
+    repositoryId: id,
+  })
 
   if (loading) {
-    refetch()
     return <Text>...loading</Text>
   }
 
-  const reviews = repository.reviews.edges.map((r) => r.node)
+  const onEndReach = () => {
+    fetchMore()
+  }
+
+  const reviews = repository?.reviews.edges.map((r) => r.node)
 
   const ItemSeparator = () => <View style={theme.itemSeparator} />
 
@@ -29,6 +35,8 @@ const SingleRepository = () => {
       ListHeaderComponent={() => <RepositoryInfo repository={repository} />}
       ListHeaderComponentStyle={theme.itemSeparator}
       ItemSeparatorComponent={ItemSeparator}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   )
 }

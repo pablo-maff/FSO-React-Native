@@ -3,41 +3,61 @@ import theme from '../../theme'
 import TextInput from '../TextInput'
 import RepositoryItem from './RepositoryItem'
 import { Picker } from '@react-native-picker/picker'
-import React from 'react'
+import React, { useState } from 'react'
 
 const RepositoryListHeader = ({
-  orderedRepositories,
   setOrderedRepositories,
   searchRepo,
   setSearchRepo,
-}) => (
-  <>
-    <TextInput
-      onChangeText={setSearchRepo}
-      value={searchRepo}
-      placeholder='Search repositories'
-      style={{
-        backgroundColor: 'white',
-        margin: 12,
-        padding: 6,
-        borderRadius: 6,
-        borderWidth: 2,
-        borderColor: 'silver',
-      }}
-    />
-    <Picker
-      selectedValue={orderedRepositories}
-      onValueChange={(itemValue, itemIndex) =>
-        setOrderedRepositories(itemValue)
-      }
-      style={{ marginLeft: 12, marginBottom: 12 }}
-    >
-      <Picker.Item label='Latest repositories' value={'createdLatest'} />
-      <Picker.Item label='Highest rated repositories' value={'higherAvg'} />
-      <Picker.Item label='Lowest rated repositories' value={'lowerAvg'} />
-    </Picker>
-  </>
-)
+}) => {
+  const [selectedOrder, setSelectedOrder] = useState()
+
+  return (
+    <>
+      <TextInput
+        onChangeText={setSearchRepo}
+        value={searchRepo}
+        placeholder='Search repositories'
+        style={{
+          backgroundColor: 'white',
+          margin: 12,
+          padding: 6,
+          borderRadius: 6,
+          borderWidth: 2,
+          borderColor: 'silver',
+        }}
+      />
+      <Picker
+        selectedValue={selectedOrder}
+        onValueChange={(itemValue, itemIndex) => {
+          let orderObj
+          if (itemValue === 'higherAvg')
+            orderObj = {
+              orderBy: 'RATING_AVERAGE',
+              orderDirection: 'DESC',
+            }
+          else if (itemValue === 'lowerAvg')
+            orderObj = {
+              orderBy: 'RATING_AVERAGE',
+              orderDirection: 'ASC',
+            }
+          else
+            orderObj = {
+              orderBy: 'CREATED_AT',
+              orderDirection: 'DESC',
+            }
+          setOrderedRepositories(orderObj)
+          setSelectedOrder(itemValue)
+        }}
+        style={{ marginLeft: 12, marginBottom: 12 }}
+      >
+        <Picker.Item label='Latest repositories' value={'createdLatest'} />
+        <Picker.Item label='Highest rated repositories' value={'higherAvg'} />
+        <Picker.Item label='Lowest rated repositories' value={'lowerAvg'} />
+      </Picker>
+    </>
+  )
+}
 
 // Use a class component to not loose focus on textinput because flatlist will unmount it after each typed letter
 export class RepositoryListContainer extends React.Component {
@@ -45,7 +65,6 @@ export class RepositoryListContainer extends React.Component {
     const props = this.props
     return (
       <RepositoryListHeader
-        orderedRepositories={props.orderedRepositories}
         setOrderedRepositories={props.setOrderedRepositories}
         searchRepo={props.searchRepo}
         setSearchRepo={props.setSearchRepo}
@@ -71,6 +90,8 @@ export class RepositoryListContainer extends React.Component {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
         ListHeaderComponent={this.renderHeader}
+        onEndReached={props.onEndReach}
+        onEndReachedThreshold={0.5}
       />
     )
   }

@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 
+// This is bad use of fragments, should use them like Details, pageInfo, etc.
 export const REPOSITORIES_DETAILS = gql`
   fragment RepositoriesDetails on RepositoryConnection {
     edges {
@@ -14,6 +15,12 @@ export const REPOSITORIES_DETAILS = gql`
         reviewCount
         ratingAverage
       }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
     }
   }
 `
@@ -30,7 +37,7 @@ export const REPOSITORY_DETAILS = gql`
     reviewCount
     ratingAverage
     url
-    reviews {
+    reviews(first: $first, after: $after) {
       edges {
         node {
           id
@@ -42,6 +49,12 @@ export const REPOSITORY_DETAILS = gql`
             username
           }
         }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
       }
     }
   }
