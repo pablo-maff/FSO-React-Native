@@ -39,6 +39,7 @@ const theme = {
       padding: 20,
       borderRadius: 6,
       backgroundColor: 'blue',
+      marginHorizontal: 8,
     },
     smallButton: {
       paddingHorizontal: 5,
@@ -78,6 +79,7 @@ const theme = {
       borderWidth: 2,
       padding: 9,
       marginBottom: 8,
+      marginHorizontal: 8,
     },
     errorText: {
       marginTop: 5,
