@@ -77,10 +77,26 @@ describe('RepositoryList', () => {
       evaluate(secondRepositoryItem, secondRepoData.language)
       evaluate(firstRepositoryItem, firstRepoData.forksCount, 'forks-count')
       evaluate(secondRepositoryItem, secondRepoData.forksCount, 'forks-count')
-      evaluate(firstRepositoryItem, firstRepoData.stargazersCount, 'stars-count')
-      evaluate(secondRepositoryItem, secondRepoData.stargazersCount, 'stars-count')
-      evaluate(firstRepositoryItem, firstRepoData.ratingAverage, 'rating-average')
-      evaluate(secondRepositoryItem, secondRepoData.ratingAverage, 'rating-average')
+      evaluate(
+        firstRepositoryItem,
+        firstRepoData.stargazersCount,
+        'stars-count'
+      )
+      evaluate(
+        secondRepositoryItem,
+        secondRepoData.stargazersCount,
+        'stars-count'
+      )
+      evaluate(
+        firstRepositoryItem,
+        firstRepoData.ratingAverage,
+        'rating-average'
+      )
+      evaluate(
+        secondRepositoryItem,
+        secondRepoData.ratingAverage,
+        'rating-average'
+      )
       evaluate(firstRepositoryItem, firstRepoData.reviewCount, 'review-count')
       evaluate(secondRepositoryItem, secondRepoData.reviewCount, 'review-count')
     })

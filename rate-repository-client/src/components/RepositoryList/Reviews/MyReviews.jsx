@@ -1,42 +1,41 @@
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useNavigate } from 'react-router-native'
-import { LOGGED_IN_USER } from '../../../graphql/queries'
 import { DELETE_REVIEW } from '../../../graphql/mutations'
 import ReviewItem from './ReviewItem'
 import { View, FlatList, Alert } from 'react-native'
 import Text from '../../Text'
 import Button from '../../Button'
 import theme from '../../../theme'
+import useMyReviews from '../../../hooks/useMyReviews'
 
 const MyReviews = () => {
   const navigate = useNavigate()
   const [deleteReview] = useMutation(DELETE_REVIEW)
-  const { data, loading, refetch } = useQuery(LOGGED_IN_USER, {
-    variables: { includeReviews: true },
-    fetchPolicy: 'cache-and-network',
-    onError: (error) => {
-      console.error(error.graphQLErrors[0].message)
-    },
+
+  const { me, loading, fetchMore, refetch } = useMyReviews({
+    first: 6,
+    includeReviews: true,
   })
+
+  const onEndReach = () => {
+    console.log('end!')
+    fetchMore()
+  }
 
   if (loading) {
     return <Text>loading...</Text>
   }
 
-  const reviews = data?.me.reviews.edges.map((r) => r.node)
+  const parsedReviews = me.reviews.edges.map((r) => r.node)
 
   const ItemSeparator = () => <View style={theme.itemSeparator} />
 
-  const handleDeleteReview = (id) => {
-    deleteReview({ variables: { deleteReviewId: id } })
+  const handleDeleteReview = async (id) => {
+    await deleteReview({ variables: { deleteReviewId: id } })
     refetch()
   }
 
   const createTwoButtonAlert = (id) => {
-    // const deleteConfirmation = () => {
-    //   handleDeleteReview(id)
-    // }
-
     Alert.alert(
       'Delete review',
       'Are you sure you want to delete this review?',
@@ -52,7 +51,6 @@ const MyReviews = () => {
   }
 
   const renderItem = ({ item }) => {
-    console.log('review', item)
     return (
       <View style={theme.container.card}>
         <ReviewItem review={item} myReviews={true} />
@@ -78,12 +76,12 @@ const MyReviews = () => {
 
   return (
     <FlatList
-      data={reviews}
+      data={parsedReviews}
       renderItem={renderItem}
       keyExtractor={({ id }) => id}
       ItemSeparatorComponent={ItemSeparator}
-      // onEndReached={onEndReach}
-      // onEndReachedThreshold={0.5}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   )
 }

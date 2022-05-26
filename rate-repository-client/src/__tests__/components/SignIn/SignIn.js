@@ -23,7 +23,6 @@ describe('SignIn', () => {
           password: 'password',
         })
       })
-      // console.log('onSubmit', onSubmit.mock)
     })
   })
 })
