@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { REPOSITORY_DETAILS, REVIEWS_DETAILS } from './fragments'
+import { REVIEWS_DETAILS } from './fragments'
 
 export const SIGN_IN = gql`
   mutation Authenticate($credentials: AuthenticateInput) {

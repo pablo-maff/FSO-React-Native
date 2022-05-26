@@ -60,10 +60,24 @@ export const GET_REPOSITORY = gql`
 `
 
 export const LOGGED_IN_USER = gql`
-  query {
+  query loggedInUser($includeReviews: Boolean = false) {
     me {
       id
       username
+
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+            rating
+            createdAt
+            text
+            repository {
+              fullName
+            }
+          }
+        }
+      }
     }
   }
 `

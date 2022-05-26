@@ -44,6 +44,7 @@ const AppBar = () => {
         ) : (
           <>
             <AppBarTab text={'Create a review'} path={'/review'} />
+            <AppBarTab text={'My reviews'} path={'/myReviews'} />
             <AppBarTab
               text={'Sign Out'}
               path={'/login'}

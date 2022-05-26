@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, myReviews = false }) => {
   return (
     <View style={theme.container.card}>
       <View style={theme.container.row}>
@@ -26,7 +26,14 @@ const ReviewItem = ({ review }) => {
             {review.rating}
           </Text>
         </View>
-        <ReviewHeader userName={review.user.username} date={review.createdAt} />
+        {!myReviews ? (
+          <ReviewHeader title={review.user.username} date={review.createdAt} />
+        ) : (
+          <ReviewHeader
+            title={review.repository.fullName}
+            date={review.createdAt}
+          />
+        )}
       </View>
       <View style={theme.container.row}>
         <Text style={{ marginLeft: 68 }}>{review.text}</Text>
